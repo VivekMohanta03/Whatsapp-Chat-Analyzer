@@ -34,7 +34,6 @@ if uploaded_file is not None:
     substring_to_remove = "changed the group name"
     user_list = remove_substring(user_list, substring_to_remove)
 
-    user_list.remove('group_notification')
     user_list.sort()
     user_list.insert(0, "Overall")
     selected_user = st.sidebar.selectbox("Show analysis of: ", user_list)
