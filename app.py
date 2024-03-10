@@ -15,7 +15,7 @@ st.sidebar.title("Whatsapp Chat Analyzer")
 
 st.title("Analysis Space")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a .txt file of any chat - (without media)")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     data = bytes_data.decode("utf-8")
