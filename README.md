@@ -51,4 +51,4 @@
 
 
 <h2> With a WhatsApp chat analyzer, your chats are no longer just conversations – they become a window into your digital social life! </h2>
-<h1><a href="https://whatsapp-chat-analyzer-v1.streamlit.app/">Try the app.. CLICK HERE</a> <h1>
+<h1>Just export your whatsapp chat as .txt file without media and you are good to go.... <br> Try it now: <a href="https://whatsapp-chat-analyzer-v1.streamlit.app/">CLICK HERE</a> <h1>
