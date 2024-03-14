@@ -134,11 +134,14 @@ if uploaded_file is not None:
         # Emoji Analysis
         st.title("Emoji Analysis: (Top 5)")
         emoji_df = helper.emoji_helper(selected_user, df)
-        col1, col2 = st.columns(2)
-        with col1:
-            st.dataframe(emoji_df)
-        with col2:
-            emoji_df = emoji_df.rename(columns={'Emojis': 0, 'Number of times used': 1})
-            fig, ax = plt.subplots()
-            ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
-            st.pyplot(fig)
+        if not emoji_df is None:
+            col1, col2 = st.columns(2)
+            with col1:
+                st.dataframe(emoji_df)
+            with col2:
+                emoji_df = emoji_df.rename(columns={'Emojis': 0, 'Number of times used': 1})
+                fig, ax = plt.subplots()
+                ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
+                st.pyplot(fig)
+        else:
+            st.subheader("No Emojis Found")
