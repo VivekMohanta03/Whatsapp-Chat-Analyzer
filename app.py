@@ -133,10 +133,10 @@ if uploaded_file is not None:
 
         # Emoji Analysis
         st.title("Emoji Analysis: (Top 5)")
-        if helper.emoji_helper(selected_user, df) == -1:
+        emoji_df = helper.emoji_helper(selected_user, df)
+        if emoji_df == -1:
             st.subheader('No Emojis Found.')
         else:
-            emoji_df = helper.emoji_helper(selected_user, df)
             col1, col2 = st.columns(2)
             with col1:
                 st.dataframe(emoji_df)
