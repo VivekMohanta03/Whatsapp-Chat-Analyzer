@@ -15,7 +15,7 @@ st.sidebar.title("Whatsapp Chat Analyzer")
 
 st.title("Analysis Space")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a .txt file of any chat - (without media)")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
     data = bytes_data.decode("utf-8")
@@ -34,7 +34,6 @@ if uploaded_file is not None:
     substring_to_remove = "changed the group name"
     user_list = remove_substring(user_list, substring_to_remove)
 
-    user_list.remove('group_notification')
     user_list.sort()
     user_list.insert(0, "Overall")
     selected_user = st.sidebar.selectbox("Show analysis of: ", user_list)
@@ -134,13 +133,15 @@ if uploaded_file is not None:
 
         # Emoji Analysis
         st.title("Emoji Analysis: (Top 5)")
-        emoji_df = helper.emoji_helper(selected_user, df)
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.dataframe(emoji_df)
-        with col2:
-            emoji_df = emoji_df.rename(columns={'Emojis': 0, 'Number of times used': 1})
-            fig, ax = plt.subplots()
-            ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
-            st.pyplot(fig)
+        if helper.emoji_helper(selected_user, df) == -1:
+            st.caption('No Emojis Found.')
+        else:
+            emoji_df = helper.emoji_helper(selected_user, df)
+            col1, col2 = st.columns(2)
+            with col1:
+                st.dataframe(emoji_df)
+            with col2:
+                emoji_df = emoji_df.rename(columns={'Emojis': 0, 'Number of times used': 1})
+                fig, ax = plt.subplots()
+                ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
+                st.pyplot(fig)

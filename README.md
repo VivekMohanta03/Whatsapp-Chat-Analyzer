@@ -51,4 +51,4 @@
 
 
 <h2> With a WhatsApp chat analyzer, your chats are no longer just conversations – they become a window into your digital social life! </h2>
-<h1>Try the app: <h1>
+
